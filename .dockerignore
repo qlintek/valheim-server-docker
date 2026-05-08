@@ -23,3 +23,4 @@ Dockerfile
 **/__pycache__
 venv*
 .vscode/
+huey-bot/.env
