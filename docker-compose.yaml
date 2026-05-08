@@ -1,15 +1,41 @@
+version: '2'
 services:
-  valheim:
+  valheim_test:
     image: ghcr.io/community-valheim-tools/valheim-server
+    container_name: valheim
+    restart: always
     cap_add:
       - sys_nice
+    environment:
+      - SERVER_NAME=Test Server
+      - WORLD_NAME=Test
+      - SERVER_PASS=SecretTest
+      - SERVER_PUBLIC=0
+      - DNS_1=1.1.1.1
+      - DNS_2=1.0.0.1
     volumes:
-      - $HOME/valheim-server/config:/config
-      - $HOME/valheim-server/data:/opt/valheim
+      - C:/Valheim-docker-test:/config
+      - C:/Valheim-docker-test/data:/opt/valheim
     ports:
-      - "2456-2458:2456-2458/udp"
-      - "9001:9001/tcp"
-    env_file:
-      - $HOME/valheim-server/valheim.env
+      - 2460-2462:2456-2458/udp
+
+  Vice_Server:
+    image: ghcr.io/community-valheim-tools/valheim-server
+    container_name: vice
     restart: always
-    stop_grace_period: 2m
+    cap_add:
+      - sys_nice
+    environment:
+      - SERVER_NAME=Vice Server
+      - WORLD_NAME=DrownTown
+      - SERVER_PASS=Jasmine
+      - SERVER_PUBLIC=1
+      - DNS_1=1.1.1.1
+      - DNS_2=1.0.0.1
+    volumes:
+      - C:/Valheim-docker-prod:/config
+      - C:/Valheim-docker-prod/data:/opt/valheim 
+    ports:
+      - "2456:2456/udp"
+      - "2457:2457/udp"
+      - "2458:2458/udp"
