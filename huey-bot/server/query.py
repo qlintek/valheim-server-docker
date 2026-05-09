@@ -1,3 +1,13 @@
+import os
+import a2s
+from dotenv import load_dotenv
+
+load_dotenv()
+
+valheim_server_ip = os.getenv('VALHEIM_SERVER_IP')
+valheim_query_port = int(os.getenv('VALHEIM_QUERY_PORT'))
+
+
 def get_player_count(ip,port):
     try:
         info = a2s.info((ip, port))
