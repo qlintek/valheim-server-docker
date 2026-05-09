@@ -24,3 +24,5 @@ Dockerfile
 venv*
 .vscode/
 huey-bot/.env
+huey-bot/logs/bot.log
+huey-bot/logs/*
