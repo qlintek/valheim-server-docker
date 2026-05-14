@@ -19,6 +19,7 @@ services:
     ports:
       - 2460-2462:2456-2458/udp
 
+
   Vice_Server:
     image: ghcr.io/community-valheim-tools/valheim-server
     container_name: vice
@@ -39,3 +40,6 @@ services:
       - "2456:2456/udp"
       - "2457:2457/udp"
       - "2458:2458/udp"
+        
+    # networks:
+    #   - vice_network
